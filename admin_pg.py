@@ -83,6 +83,40 @@ def okdb():
 def errordb():
     return render_template('errordb.html')
 
+
+@app.route('/crearusuario', methods=['GET', 'POST'])
+def createuser():
+    opts={}
+    user = 'system'
+    password = '123'
+    host = 'localhost'
+    port = '1521'
+    SID = 'orcl'
+    dsn_tns = cx_Oracle.makedsn(host,port,SID)
+    try:
+        conn = cx_Oracle.connect(user,password,dsn_tns)
+
+        if request.method == 'POST':
+            try:
+                username = request.form["username"]
+                userpass = request.form["userpass"]
+                cursor = conn.cursor()
+                cursor.execute("""CREATE USER %s IDENTIFIED BY %s DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP QUOTA UNLIMITED ON USERS""" % (username, userpass))
+                cursor.execute("grant CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW to %s" % (username))
+                
+                cursor.execute("grant resource to %s" %(username))
+                cursor.execute("grant connect to %s" % (username))
+                conn.commit()
+            except Exception as e:
+                print e
+                opts["errors"] = u"Error en la conexión de la base de datos. Verifique el host o el usuario"
+    except cx_Oracle.DatabaseError, exc:
+        return redirect(url_for('errordb'))
+
+    return render_template('createuser.html', **opts)
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     opts = {}
