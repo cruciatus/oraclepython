@@ -1,0 +1,32 @@
+{% extends 'users.html' %}
+{% block content %}
+<form method="post">
+<table class="fullwidth" cellpadding="0" cellspacing="0" border="0">
+	<thead>
+		<tr>
+			<td>Tabla</td>
+			<td>SELECT</td>
+			<td>INSERT</td>
+			<td>UPDATE</td>
+			<td>DELETE</td>
+			<td>TRUNCATE</td>									
+			<td>REFERENCES</td>
+		</tr>
+	</thead>	
+	<tbody>
+		{% for table in tables %}
+		<tr>
+			<td>{{ table.name }}</td>
+			<td><input type="checkbox" name="{{ table.name }}" value="select" {% if 'SELECT' in table.privs %} checked{% endif %}></td>
+			<td><input type="checkbox" name="{{ table.name }}" value="insert" {% if 'INSERT' in table.privs %} checked{% endif %}></td>
+			<td><input type="checkbox" name="{{ table.name }}" value="update" {% if 'UPDATE' in table.privs %} checked{% endif %}></td>
+			<td><input type="checkbox" name="{{ table.name }}" value="delete" {% if 'DELETE' in table.privs %} checked{% endif %}></td>
+			<td><input type="checkbox" name="{{ table.name }}" value="truncate" {% if 'TRUNCATE' in table.privs %} checked{% endif %}></td>
+			<td><input type="checkbox" name="{{ table.name }}" value="references" {% if 'REFERENCES' in table.privs %} checked{% endif %}></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<input class="button" type="submit" value="Actualizar">
+</form>
+{% endblock %}

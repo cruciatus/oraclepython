@@ -1,0 +1,15 @@
+{% extends 'users.html' %}
+{% block content %}
+<h1>Asignaci&oacuten de Roles</h1>					
+<p>Seleccione el usuario al que desee asignar roles de la lista ubicada en la izquierda, a continuaci&oacuten seleccione las casillas correspondientes a los roles que desea aplicar y d&eacute clic en el bot&oacuten Actualizar. Podr&aacute revisar los cambios efectuados si entra a la opci&oacuten de editar los permisos de usuarios.</p>
+<p>Los roles de usuario se encuentran predefinidos por el ingeniero DBA del sistema de informaci&oacuten. Para informaci&oacuten sobre c&oacutemo cambiarlos por favor contacte con el departamento de servicios inform&aacuteticos.</p>
+<p>Recuerde cerrar la sesi&oacuten luego de realizar los cambios pertinentes.</p>
+{% endblock %}
+{% block sidebar %}
+<h2>Usuarios</h2>
+<ul type=none>
+	{% for user in users %}
+	<li><a href="/roles/{{ user.name }}/">{{ user.name }}</a></li>
+	{% endfor %}					
+</ul>
+{% endblock %}	

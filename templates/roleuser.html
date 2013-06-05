@@ -1,0 +1,18 @@
+{% extends 'users.html' %}
+{% block sidebar %}
+<h2>Usuarios</h2>
+<ul type=none>
+	{% for user in users %}
+	<li><a href="/roles/{{ user.name }}/">{{ user.name }}</a></li>
+	{% endfor %}					
+</ul>
+{% endblock %}
+{% block content %}
+{{ user_id }}
+<form method="post">        
+{% for c in casos_uso %}
+<input type="checkbox" name="caso_uso_{{ c.name }}" value="references" {% if c.selected %} checked{% endif %}> &nbsp {{ c.name }} <br /> <br />
+{% endfor %}
+<input class="button" type="submit" value="Actualizar">
+</form>
+{% endblock %}		

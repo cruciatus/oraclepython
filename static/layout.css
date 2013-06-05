@@ -1,0 +1,6 @@
+@import '{{ url_for('static', filename='core.css') }}';
+
+@import '{{ url_for('static', filename='skin_clean.css') }}';
+ 
+@import '{{ url_for('static', filename='plugins.css') }}';
+@import '{{ url_for('static', filename='css3.css') }}';

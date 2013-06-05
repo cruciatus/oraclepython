@@ -1,0 +1,54 @@
+{% if errors %}
+<p>{{ errors }} </p>
+{% endif %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- End of Meta -->
+		
+		<!-- Page title -->
+		<title>Modulo de Administracion BD - Fabrica de Muebles</title>
+		<!-- End of Page title -->
+		
+		<!-- Libraries -->
+		<link type="text/css" href="{{ url_for('static', filename='login.css') }}" rel="stylesheet" />	
+		<link type="text/css" href="{{ url_for('static', filename='jquery-ui-1.7.2.custom.html') }}" rel="stylesheet" />	
+		
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery-1.3.2.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='easyTooltip.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery-ui-1.7.2.custom.min.js') }}"></script>
+		<!-- End of Libraries -->	
+	</head>
+	<body>
+	<div id="container">
+		<div class="logo">
+			<a href="#"><img src="{{ url_for('static', filename='logo.png') }}" alt="" /></a>
+		</div>
+		<div id="box">
+			<form method="POST">
+			<p class="main">
+				<label>Usuario: </label>
+				<input name="user" value="system" /> 
+				<label>Password: </label>
+				<input type="password" name="password" value="123" />
+			</p>
+			<br/><br/><br/>
+			<p class="main">
+				<label>SID: </label>
+				<input name="dbname" value="orcl" />
+				<label>Host: </label>
+				<input name="host" value="Andres" />
+				<label>Puerto: </label>
+				<input name="port" value="1521" />				
+			</p>
+
+			<p class="space">				
+				<input type="submit" value="Login" class="login" />
+			</p>
+			</form>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'users.html' %}
+{% block sidebar %}
+<h2>Informaci&oacute;n</h2>
+Los usuarios creados en este formulario salen completamente libres de permisos y s&oacute;lo pueden efectuar la conexi&oacute;n a la base de datos. Sin posibilidad de consultar ning&uacute;n dato.
+{% endblock %}
+{% block content %}
+<form method="post">
+	<p>
+		<label>Usuario: </label>
+		<input class="mf" name="username" value="escriba el nombre de usuario" /> 
+	</p>
+	<p>
+		<label>Contrase&ntilde;a: </label>
+		<input class="lf" name="userpass" value="escriba la contrase&ntilde;a a asignar" />
+	</p>
+	<p>	
+		<input class="button" type="submit" value="Crear">
+	</p>
+</form>
+{% endblock %}

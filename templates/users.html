@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" />
+		<title>Modulo de Administracion BD - Fabrica de Muebles</title>
+	</head>
+	<body>
+		<p>Bienvenido al Modulo de Administracion de Seguridad BD - Fabrica de Muebles</p>
+		<ul class="nav">
+			<li><a href="/usuarios">Editar Permisos de Usuarios</a></li>
+			<li><a href="/roles">Asignar Roles</a></li>
+			<li><a href="/crearusuario">Crear Usuarios</a></li>
+		</ul>
+		<div id="main">
+			{% block content %}
+			<h1>Bienvenido!</h1>					
+			<p>Las distintas opciones para navegar se encuentran en el menu horizontal superior.</p>
+			<p>Luego de seleccionar la opcion deseada, se generara una lista con todos los usuarios susceptibles de ser modificados en la seccion de la izquierda.</p>		
+			<p>Los roles de usuario se encuentran predefinidos por el ingeniero DBA del sistema de informacion. Para informacion sobre como cambiarlos por favor contacte con el departamento de servicios informaticos.</p>
+			<p>Recuerde cerrar la sesion luego de realizar los cambios pertinentes.</p>
+			{% endblock %}
+		</div>
+	</div>
+	
+	<div id="sidebar">	
+		{% block sidebar %}
+		<h2>Usuarios</h2>
+		<ul type=none>
+			{% for user in users %}
+			<li><a href="/usuario/{{ user.username }}/">{{ user.username }}</a></li>
+			{% endfor %}					
+		</ul>
+		{% endblock %}
+	</div>
+	</body>
+</html>

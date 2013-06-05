@@ -1,0 +1,9 @@
+{% extends 'users.html' %}
+{% block content %}
+<form method="post">        
+		{% for c in casos_uso %}
+        {{ c.name }} <input type="checkbox" name="caso_uso_{{ c.name }}" value="references" {% if c.selected %} checked{% endif %}>
+        {% endfor %}
+<input class="button" type="submit" value="Actualizar">
+</form>
+{% endblock %}		
