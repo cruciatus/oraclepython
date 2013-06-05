@@ -27,7 +27,7 @@
 		<h2>Usuarios</h2>
 		<ul type=none>
 			{% for user in users %}
-			<li><a href="/usuario/{{ user.username }}/">{{ user.username }}</a></li>
+			<li><a href="/usuario/{{ user.username }}/">{{ user.username }}</a> <a href="/usuario/{{ user.user_id }}/delete">X</a></li>
 			{% endfor %}					
 		</ul>
 		{% endblock %}

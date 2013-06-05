@@ -75,6 +75,26 @@ def users():
         return redirect(url_for('errordb'))
     return render_template('users.html', **opts)
 
+
+@app.route('/usuario/<user_id>/delete')
+def users_del(user_id):
+    opts={}
+    user = 'system'
+    password = 'system'
+    host = 'localhost'
+    port = '1521'
+    SID = 'XE'
+    dsn_tns = cx_Oracle.makedsn(host,port,SID)       
+    try:
+        conn = cx_Oracle.connect(user,password,dsn_tns)
+        cursor = conn.cursor()
+        cursor.execute ("delete user_id from dba_users where user_id != '%s''" % (user_id))
+    except cx_Oracle.DatabaseError, exc:
+        return redirect(url_for('errordb'))
+    return render_template('users.html', **opts)
+
+
+
 @app.route('/okdb', methods=['GET', 'POST'])
 def okdb():
     return render_template('okdb.html')
